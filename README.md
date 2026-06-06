@@ -239,8 +239,10 @@ Screenshots are embedded inline throughout the write-up above at their relevant 
 
 | Screenshot | Section |
 |------------|---------|
-| `images/access_log.png` | Step 1 – Nginx Log Analysis |
-| `images/main_py.png` | Step 3 – Vulnerable Application Source |
+| `<img width="959" height="978" alt="Screenshot 2026-05-10 001707" src="https://github.com/user-attachments/assets/3d8a4ffe-d962-4ac1-9ece-7b0e0b45e538" />
+` | Step 1 – Nginx Log Analysis |
+| `<img width="959" height="850" alt="Screenshot 2026-05-10 001725" src="https://github.com/user-attachments/assets/337c5743-ba0b-4805-9fa3-30e15d1448d6" />
+| Step 3 – Vulnerable Application Source |
 
 ---
 
