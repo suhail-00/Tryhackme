@@ -220,9 +220,11 @@ This lab reinforced that a strong SOC analyst must think beyond firewall rules a
 
 | Screenshot | Section |
 |------------|---------|
-| `images/icmp_tunnel.png` | Part 1 – ICMP Tunneling Analysis |
-| `images/dns_exfil.png` | Part 2 – DNS Exfiltration Analysis |
+|<img width="1277" height="979" alt="Screenshot 2026-02-26 002613" src="https://github.com/user-attachments/assets/abd084b6-a657-449f-9e5c-6bf657de7ad7" />
+ | Part 1 – ICMP Tunneling Analysis |
+| <img width="1274" height="967" alt="Screenshot 2026-02-26 003516" src="https://github.com/user-attachments/assets/258ffc02-3d22-4b1a-b77d-56f79a875dea" />
+ | Part 2 – DNS Exfiltration Analysis |
 
 ---
 
-*Write-up by Mohammed Suhail | [GitHub](https://github.com/suhail-00/Tryhackme) | [LinkedIn](https://www.linkedin.com/)*
+*Write-up by Mohammed Suhail | [GitHub](https://github.com/suhail-00/Tryhackme) | [LinkedIn]([https://www.linkedin.com/](https://www.linkedin.com/in/mohammed-suhail-31a7b7294/))*
