@@ -34,7 +34,8 @@ Phishing Email → Malicious ZIP (Invoice.zip) → LNK File → PowerShell (Base
 **Tool:** Thunderbird + EML source viewer  
 **Artefact:** `dump.eml`
 
-![Phishing email in Thunderbird with EML source showing DKIM and SPF headers](images/phishing_email.png)
+<img width="1905" height="928" alt="Screenshot 2026-06-14 181908" src="https://github.com/user-attachments/assets/700357d8-21f8-4e85-a892-991b4c3c5724" />
+
 
 The investigation began with a suspicious email received by Julianne Westcott on **13 Jan 2023 at 09:25**:
 
@@ -66,7 +67,8 @@ Inspecting the raw EML source revealed critical indicators:
 **Tool:** Linux CLI (`lnkparse` / artefact inspection)  
 **Artefact:** LNK file inside `Invoice.zip`
 
-![LNK file parsed output showing PowerShell execution with Base64 encoded command](images/lnk_analysis.png)
+<img width="1911" height="901" alt="Screenshot 2026-06-14 183220" src="https://github.com/user-attachments/assets/89e0aebb-67c7-48ef-86c6-09c02b02273b" />
+
 
 Extracting `Invoice.zip` with the password `Invoice2023!` revealed a **Windows LNK shortcut file** disguised as an invoice document using an Excel icon (`excel.ico`).
 
@@ -97,8 +99,6 @@ Command arguments: -nop -windowstyle hidden -enc <BASE64 PAYLOAD>
 
 **Tool:** `jq`, `grep`  
 **Artefact:** `powershell.json` (Windows PowerShell Operational event logs)
-
-![PowerShell JSON logs sorted by timestamp showing C2 beacon and Seatbelt execution](images/powershell_logs.png)
 
 The PowerShell event logs were parsed and sorted chronologically using `jq`:
 
@@ -155,7 +155,8 @@ This is a **classic PowerShell C2 implant**:
 **Tool:** `jq`, `grep`  
 **Artefact:** `powershell.json`
 
-![PowerShell logs showing Seatbelt download and execution via PowerSharpPack](images/seatbelt.png)
+<img width="1906" height="913" alt="Screenshot 2026-06-14 193507" src="https://github.com/user-attachments/assets/4ebbad71-e3bb-4e0a-8c14-8c78980e9c41" />
+
 
 Grepping the PowerShell logs for `Seatbelt` revealed post-exploitation recon:
 
@@ -182,7 +183,8 @@ cat powershell.json | jq '{ScriptBlockText}' | grep Seatbelt
 **Tool:** `jq`, `grep`  
 **Artefact:** `powershell.json`
 
-![PowerShell logs showing DNS exfiltration script using nslookup to bpakcaging.xyz](images/dns_exfil.png)
+<img width="1907" height="927" alt="domain" src="https://github.com/user-attachments/assets/3c57d295-4ef5-4d50-a64c-4c498f6c75b2" />
+
 
 Grepping for `hex` in the logs revealed the exfiltration mechanism:
 
@@ -217,7 +219,7 @@ This technique abuses DNS to exfiltrate data without making any direct TCP conne
 **Tool:** Wireshark – Follow HTTP Stream  
 **Artefact:** `capture.pcapng`
 
-![Wireshark HTTP stream showing C2 beacon payload served by SimpleHTTP Python server](images/wireshark_c2.png)
+<img width="1907" height="917" alt="Screenshot 2026-06-15 193240" src="https://github.com/user-attachments/assets/485317e6-2be3-4592-8753-00a14a2c797e" />
 
 Following TCP stream 109 in Wireshark confirmed the C2 payload delivery:
 
@@ -246,7 +248,9 @@ Content-Length: 522
 **Tool:** CyberChef (From Decimal), KeePass  
 **Artefact:** Decimal-encoded data from exfiltrated file
 
-![CyberChef From Decimal decode revealing KeePass master password and path](images/cyberchef.png)
+<img width="1902" height="971" alt="Screenshot 2026-06-15 195137" src="https://github.com/user-attachments/assets/aa395542-4438-4a55-b9a3-4e9e9b35db55" />
+
+
 
 Decimal-encoded data recovered from the investigation was decoded in CyberChef using the **From Decimal** operation (Space delimiter):
 
@@ -267,6 +271,9 @@ Path        C:\Users\j.westcott
 ![KeePass protected_data.kdbx opened showing Homebanking Company Card entry with financial data](images/keepass.png)
 
 Opening `protected_data.kdbx` with the recovered master password revealed the victim's stored credentials, including a **Homebanking → Company Card** entry:
+
+<img width="1902" height="927" alt="Screenshot 2026-06-15 224312" src="https://github.com/user-attachments/assets/674a3474-a2c4-47cd-953c-4c514ef95504" />
+
 
 | Field | Value |
 |-------|-------|
@@ -344,19 +351,5 @@ The attacker successfully exfiltrated and decrypted the victim's KeePass vault, 
 
 ---
 
-## Screenshots
-
-| File | Section |
-|------|---------|
-| `images/phishing_email.png` | Step 1 – Phishing Email |
-| `images/lnk_analysis.png` | Step 2 – LNK File |
-| `images/powershell_logs.png` | Step 3 – PowerShell Logs |
-| `images/seatbelt.png` | Step 4 – Seatbelt Recon |
-| `images/dns_exfil.png` | Step 5 – DNS Exfiltration |
-| `images/wireshark_c2.png` | Step 6 – C2 Traffic |
-| `images/cyberchef.png` | Step 7 – CyberChef Decode |
-| `images/keepass.png` | Step 7 – KeePass Vault |
-
----
 
 *Write-up by Mohammed Suhail | [GitHub](https://github.com/suhail-00/Tryhackme) | [LinkedIn](https://www.linkedin.com/)*
