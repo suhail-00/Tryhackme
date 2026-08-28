@@ -1,0 +1,9 @@
+username : Rahul,Priya. Amit,Sahil,Suhail,Ravi,Jake,Jace,Paul,Dom
+role : employee, employee, employee, employee, employee, employee, employee, employee, employee, employee
+device : trusted,trusted,trusted,untrusted,trusted,untrusted,untrusted,trusted,untrusted,trusted
+
+mfa: yes,yes,yes,yes,no,no,yes,no,yes,no
+location: remote,remote,public,remote,remote,remote,public,remote,public,remote
+application: HR,Admin,Finance,medium,CRM,Finance,CRM,CRM,HR,Admin,Admin
+risk: low,low,high,medium,low,medium,high,low,high,low
+

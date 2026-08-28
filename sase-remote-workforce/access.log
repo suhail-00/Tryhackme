@@ -1,0 +1,3 @@
+2026-08-27 19.53.11 | User=Rahul | App=Finance | Decision=ALLOW | Reason=ALL SASE policy requirement satisfied
+2026-08-27 19.57.36 | User=suhail | App=Admin | Decision=deny | Reason=Untrusted device
+2026-08-27 19.59.12 | User=suhail | App=Admin | Decision=deny | Reason=Untrusted device
